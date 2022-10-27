@@ -35,6 +35,7 @@ public class PiecePanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 System.out.println(piece);
+
             }
         });
     }

@@ -10,6 +10,7 @@ public class Piece {
         this.number = number;
     }
 
+    //Default konstruktor för att kunna kontrollera att en Piece ska få värdet 0, som blir "tom"
     public int getNumber() {
         return number;
     }
