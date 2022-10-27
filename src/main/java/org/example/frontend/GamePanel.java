@@ -28,11 +28,12 @@ public class GamePanel extends JPanel {
         shuffledList.forEach(index -> this.add(new PiecePanel(new Piece(index))));
         System.out.println(shuffledList);
 
-        int counter = -1;
+        int counter = 0;
         for(int i = 0; i < grid.length; i++){
             for(int j = 0; j < grid.length; j++){
-                counter++;
                 grid[i][j] = shuffledList.get(counter);
+                counter++;
+
             }
         }
 
