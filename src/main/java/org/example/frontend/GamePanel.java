@@ -40,6 +40,11 @@ public class GamePanel extends JPanel {
 
     }
 
+    public int[][] getGrid() {
+        return grid;
+    }
 
-
+    public void setGrid(int[][] grid) {
+        this.grid = grid;
+    }
 }
