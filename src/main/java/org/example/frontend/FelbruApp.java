@@ -1,6 +1,7 @@
 package org.example.frontend;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class FelbruApp extends JFrame {
     private final JPanel basePanel = new JPanel();
@@ -9,13 +10,14 @@ public class FelbruApp extends JFrame {
 
 
     public FelbruApp() {
+        basePanel.setLayout(new BorderLayout());
 
         // Game panels
         welcomePanel = new WelcomePanel();
         gamePanel = new GamePanel();
-        gamePanel.setVisible(false);
-        basePanel.add(gamePanel);
-        basePanel.add(welcomePanel);
+        //gamePanel.setEnabled(false);
+        //basePanel.add(gamePanel);
+        basePanel.add(welcomePanel, BorderLayout.CENTER);
 
 
 
@@ -26,5 +28,6 @@ public class FelbruApp extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setTitle("FelBru App");
     }
 }
