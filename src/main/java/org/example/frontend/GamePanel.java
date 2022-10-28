@@ -25,13 +25,6 @@ public class GamePanel extends JPanel {
         buttonGrid = new JButton[ROWS][COLS];
         buttonGrid = createInitialButtonGrid();
 
-        Component[] components = this.getComponents();
-        for (int i = 0; i < components.length; i++) {
-            String text = ((JButton)components[i]).getText();
-            if(text.isBlank()) {
-                System.out.println(i);
-            }
-        }
 
         // Game Panel
         //this.setLayout(new GridLayout(4, 4));
