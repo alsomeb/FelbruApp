@@ -9,12 +9,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GamePanel extends JPanel {
+    private JPanel piecePanel = new JPanel();
 
 
     List<Integer> shuffledList = new ShufflePieces().getShuffledNumberList();
     private int[][] grid = new int[4][4];
 
     public GamePanel() {
+        // Piece Panel
+        piecePanel.setLayout(new GridBagLayout());
+        piecePanel.setBorder(BorderFactory.createLineBorder(Color.black,2));
+
         // Game Panel
         this.setLayout(new GridLayout(4, 4));
         this.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
