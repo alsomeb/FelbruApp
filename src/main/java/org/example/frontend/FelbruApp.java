@@ -14,19 +14,28 @@ public class FelbruApp extends JFrame {
 
         // Game panels
         welcomePanel = new WelcomePanel();
-        gamePanel = new GamePanel();
-        basePanel.add(gamePanel, BorderLayout.CENTER);
+        alternateGamePanel = new AlternateGamePanel();
+        basePanel.add(alternateGamePanel, BorderLayout.CENTER);
+
+        //TEST
+
+
+
+
+
+        //gamePanel = new GamePanel();
+        //basePanel.add(gamePanel, BorderLayout.CENTER);
         //basePanel.add(welcomePanel, BorderLayout.CENTER);
 
 
 
         // Frame
         this.add(basePanel);
-        setSize(800, 800);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("FelBru App");
+        this.setSize(800, 800);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setTitle("FelBru App");
     }
 }
