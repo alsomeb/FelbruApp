@@ -6,7 +6,7 @@ import java.awt.*;
 public class FelbruApp extends JFrame {
     private final JPanel basePanel = new JPanel();
     private final WelcomePanel welcomePanel;
-    private final AlternateGamePanel alternateGamePanel;
+    private final GamePanel alternateGamePanel;
 //    private final GamePanel gamePanel;
 
 
@@ -15,12 +15,12 @@ public class FelbruApp extends JFrame {
 
         // Game panels
         welcomePanel = new WelcomePanel();
-        alternateGamePanel = new AlternateGamePanel();
+        alternateGamePanel = new GamePanel();
         basePanel.add(alternateGamePanel, BorderLayout.CENTER);
 
         //TEST
 
-
+// COOMENT
 
 
 
@@ -32,7 +32,7 @@ public class FelbruApp extends JFrame {
 
         // Frame
         this.add(basePanel);
-        this.setSize(800, 800);
+        this.setSize(800, 839);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);

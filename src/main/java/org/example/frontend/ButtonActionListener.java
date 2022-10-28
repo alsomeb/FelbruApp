@@ -69,7 +69,4 @@ if (selectedGrid[row][collumn-1] == currentBlankGrid || selectedGrid [row-1][col
 return true;
 }
 
-*/
-    }
-}
-
+ */
