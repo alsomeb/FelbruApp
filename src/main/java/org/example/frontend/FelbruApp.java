@@ -6,7 +6,7 @@ import java.awt.*;
 public class FelbruApp extends JFrame {
     private final JPanel basePanel = new JPanel();
     private final WelcomePanel welcomePanel;
-    private final GamePanel alternateGamePanel;
+    private final GamePanel gamePanel;
 //    private final GamePanel gamePanel;
 
 
@@ -15,17 +15,9 @@ public class FelbruApp extends JFrame {
 
         // Game panels
         welcomePanel = new WelcomePanel();
-        alternateGamePanel = new GamePanel();
-        basePanel.add(alternateGamePanel, BorderLayout.CENTER);
+        gamePanel = new GamePanel();
+        basePanel.add(gamePanel, BorderLayout.CENTER);
 
-        //TEST
-
-// COOMENT
-
-
-
-        //gamePanel = new GamePanel();
-        //basePanel.add(gamePanel, BorderLayout.CENTER);
         //basePanel.add(welcomePanel, BorderLayout.CENTER);
 
 
