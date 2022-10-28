@@ -1,27 +1,96 @@
 package org.example.frontend;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
+
 
 public class ButtonActionListener implements ActionListener {
 
     private JButton button;
 
-    private JButton[][] buttonGrid;
 
-    public ButtonActionListener(JButton button, JButton[][] buttonGrid) {
+    public ButtonActionListener(JButton button) {
         this.button = button;
-        this.buttonGrid = buttonGrid;
     }
 
+// COOMENT
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton selectedBtn = (JButton) e.getSource(); // Den knappen man klickat på
 
+        // Alla knappar i den panelen  (container)
+        Component[] knappar = selectedBtn.getParent().getComponents();
+
+        System.out.println("DU KLICKADE PÅ DENNA KNAPPJÄVEL");
+        System.out.println("X: " + selectedBtn.getX());
+        System.out.println("Y: " + selectedBtn.getY());
+
+        JButton blankButton = getBlankButton(knappar);
+        isMoveLegal(selectedBtn, blankButton);
+
+    }
+
+    // Metod för att kontrollera huruvida en "move" är tillåten genom att räkna på om koordinater krockar.
+    // 1. är x samma som blank btn
+    //        - om ja:
+    //            - är y-200 || y + 200 = blankBtn
+    public boolean isMoveLegal(JButton selectedButton, JButton blankButton) {
+        if (selectedButton.getX() == blankButton.getX()) {
+            if (selectedButton.getY() - 200 == blankButton.getY() ||
+                    selectedButton.getY() + 200 == blankButton.getY()) {
+                System.out.println("True");
+                return true;
+            }
+        }
+        if (selectedButton.getY() == blankButton.getY()) {
+            if (selectedButton.getX() - 200 == blankButton.getX() ||
+                    selectedButton.getX() + 200 == blankButton.getX()) {
+                System.out.println("True");
+                return true;
+            } else {
+                System.out.println("False");
+                return false;
+            }
+        }
+        System.out.println("False");
+        return false;
+    }
+
+    public JButton getBlankButton(Component[] knappar) {
+        for (Component button : knappar) {
+            JButton currentButton = (JButton) button;
+            if (currentButton.getText().isBlank()) {
+                System.out.println("BLANK BUTTON:");
+                System.out.println("X: " + button.getX());
+                System.out.println("Y: " + button.getY());
+                return currentButton;
+            }
+        }
+        throw new NoSuchElementException();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
         for (int row = 0; row < buttonGrid.length; row++) {
             for (int col = 0; col < buttonGrid.length; col++) {
                 if (buttonGrid[row][col] == selectedBtn) {
@@ -37,6 +106,8 @@ public class ButtonActionListener implements ActionListener {
         }
     }
 
+ */
+/*
     public List<Integer> getCurrentEmptyButtonPosition(JButton[][] buttonGrid) {
 
 //        int SelectedPanelPosition;
