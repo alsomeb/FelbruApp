@@ -6,7 +6,8 @@ import java.awt.*;
 public class FelbruApp extends JFrame {
     private final JPanel basePanel = new JPanel();
     private final WelcomePanel welcomePanel;
-    private final GamePanel gamePanel;
+    private final AlternateGamePanel alternateGamePanel;
+//    private final GamePanel gamePanel;
 
 
     public FelbruApp() {
