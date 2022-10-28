@@ -39,7 +39,6 @@ public class GamePanel extends JPanel {
             for(int j = 0; j < grid.length; j++){
                 grid[i][j] = shuffledList.get(counter);
                 counter++;
-
             }
         }
 
