@@ -10,6 +10,8 @@ import java.util.List;
 
 public class GamePanel extends JPanel {
 
+
+    List<Integer> shuffledList = new ShufflePieces().getShuffledNumberList();
     private int[][] grid = new int[4][4];
 
     public GamePanel() {
@@ -23,7 +25,6 @@ public class GamePanel extends JPanel {
 
 
     private void loadPieces(){
-        List<Integer> shuffledList = new ShufflePieces().getShuffledNumberList();
 
         shuffledList.forEach(index -> this.add(new PiecePanel(new Piece(index))));
         System.out.println(shuffledList);
@@ -38,7 +39,6 @@ public class GamePanel extends JPanel {
         }
 
         System.out.println(Arrays.deepToString(grid));
-
     }
 
     public int[][] getGrid() {
