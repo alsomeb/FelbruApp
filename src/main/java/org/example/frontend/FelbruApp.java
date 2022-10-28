@@ -7,8 +7,6 @@ public class FelbruApp extends JFrame {
     private final JPanel basePanel = new JPanel();
     private final WelcomePanel welcomePanel;
     private final GamePanel gamePanel;
-//    private final GamePanel gamePanel;
-
 
     public FelbruApp() {
         basePanel.setLayout(new BorderLayout());
