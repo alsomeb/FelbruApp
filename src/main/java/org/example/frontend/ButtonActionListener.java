@@ -4,12 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 
 public class ButtonActionListener implements ActionListener {
 
+    //TODO: Obsolet?
     private JButton button;
+    ArrayList<String> winCondition = createWinCondition();
 
 
     public ButtonActionListener(JButton button) {
@@ -19,25 +23,30 @@ public class ButtonActionListener implements ActionListener {
     // COOMENT
     @Override
     public void actionPerformed(ActionEvent e) {
-        JButton selectedBtn = (JButton) e.getSource(); // Den knappen man klickat på
 
+        //ArrayList<String> winCondition = GamePanel.// Lista med alla knappar sorterade. Om = spelplan -> win.
+        JButton selectedBtn = (JButton) e.getSource(); // Den knappen man klickat på
         // Alla knappar i den panelen  (container)
-        Component[] knappar = selectedBtn.getParent().getComponents();
+        Component[] buttons = selectedBtn.getParent().getComponents();
+
+        //TODO: Problem: Behöver parsea till <String> så att den blir jämförbar med winCondition
+        ArrayList<Component> flowingButtonsList = new ArrayList<>(Arrays.stream(selectedBtn.getParent().getComponents()).toList());
+        for(Component button : flowingButtonsList){
+            System.out.println(button.getName());
+        }
+
+        System.out.println(winCondition);
 
         System.out.println("DU KLICKADE PÅ DENNA KNAPPJÄVEL");
         System.out.println("X: " + selectedBtn.getX());
         System.out.println("Y: " + selectedBtn.getY());
 
-        JButton blankButton = getBlankButton(knappar);
+        JButton blankButton = getBlankButton(buttons);
 
         movePiece(selectedBtn, blankButton);
 
     }
-    /*
-         * Gör blank enabled.
-         * Tillskriv värdet av selected till blank
-        * gör selected till 0
-     */
+
     public void movePiece(JButton selectedButton, JButton blankButton) {
 
         if (isMoveLegal(selectedButton, blankButton)) {
@@ -87,6 +96,28 @@ public class ButtonActionListener implements ActionListener {
             }
         }
         throw new NoSuchElementException();
+    }
+
+    public ArrayList<String> createWinCondition(){
+        ArrayList<String> winCondition = new ArrayList<>();
+        winCondition.add("1");
+        winCondition.add("2");
+        winCondition.add("3");
+        winCondition.add("4");
+        winCondition.add("5");
+        winCondition.add("6");
+        winCondition.add("7");
+        winCondition.add("8");
+        winCondition.add("9");
+        winCondition.add("10");
+        winCondition.add("11");
+        winCondition.add("12");
+        winCondition.add("13");
+        winCondition.add("14");
+        winCondition.add("15");
+        winCondition.add("empty");
+
+        return winCondition;
     }
 }
 

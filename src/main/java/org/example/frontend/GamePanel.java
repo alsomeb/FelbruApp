@@ -4,9 +4,18 @@ import org.example.backend.ShufflePieces;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GamePanel extends JPanel {
+
+    //TODO: Eventuellt obsolet. Om jag inte kan skapa upp listan winCondition härifrån till ButtonActionListener så ska
+    // den tas bort helt från GamePanel. "setName" måste vara kvar!!!
+//    public List<String> getWinCondition() {
+//        return winCondition;
+//    }
+    //TODO: Eventuellt obsolet.
+//    public List<String> winCondition = new ArrayList<>();
 
     public GamePanel() {
         this.setBackground(Color.LIGHT_GRAY);
@@ -24,8 +33,12 @@ public class GamePanel extends JPanel {
 
         for (int i = 0; i < 16; i++) {
             JButton currentButton = new JButton(String.valueOf(shuffledList.get(i)));
+            currentButton.setName(String.valueOf(shuffledList.get(i)));
+//            createWinCondition(currentButton);
             if(currentButton.getText().equals("0")) {
                 currentButton.setText("");
+                currentButton.setName("empty");
+//                createWinCondition(currentButton);
                 currentButton.setEnabled(false);
             }
             currentButton.setBounds(x, y, width, height);
@@ -40,6 +53,11 @@ public class GamePanel extends JPanel {
 
         }
     }
+
+    // TODO: Eventuellt obsolet.
+//    public void createWinCondition(JButton currentButton){
+//        winCondition.add(currentButton.getName());
+//    }
 
 
 
