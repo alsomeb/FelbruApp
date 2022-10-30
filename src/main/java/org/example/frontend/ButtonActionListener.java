@@ -63,7 +63,10 @@ public class ButtonActionListener implements ActionListener {
         if (isMoveLegal(selectedButton, blankButton)) {
             blankButton.setEnabled(true);
             blankButton.setText(selectedButton.getText());
+            blankButton.setBackground(Color.decode("#C7F2A4"));
+
             selectedButton.setText("");
+            selectedButton.setBackground(Color.WHITE);
             selectedButton.setEnabled(false);
         }
 
