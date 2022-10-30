@@ -16,7 +16,6 @@ public class ButtonActionListener implements ActionListener {
         this.button = button;
     }
 
-    // COOMENT
     @Override
     public void actionPerformed(ActionEvent e) {
 
