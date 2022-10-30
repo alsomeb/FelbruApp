@@ -1,50 +1,63 @@
 package org.example.frontend;
 
-import org.example.backend.Piece;
 import org.example.backend.ShufflePieces;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GamePanel extends JPanel {
 
+    //TODO: Eventuellt obsolet. Om jag inte kan skapa upp listan winCondition härifrån till ButtonActionListener så ska
+    // den tas bort helt från GamePanel. "setName" måste vara kvar!!!
+//    public List<String> getWinCondition() {
+//        return winCondition;
+//    }
+    //TODO: Eventuellt obsolet.
+//    public List<String> winCondition = new ArrayList<>();
+
     public GamePanel() {
-        // Game Panel
-        this.setLayout(new GridLayout(4, 4));
-        this.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        this.setBackground(Color.BLACK);
-        loadPieces();
-
-
-
+        this.setBackground(Color.LIGHT_GRAY);
+        this.setLayout(null);
+        createJButtons();
     }
 
-
-    private void loadPieces(){
+//COOMMENT
+    public void createJButtons(){
+        int x = 0;
+        int y = 0;
+        int width = 200;
+        int height = 200;
         List<Integer> shuffledList = new ShufflePieces().getShuffledNumberList();
-        shuffledList.forEach(index -> this.add(new PiecePanel(new Piece(index))));
-        System.out.println(shuffledList);
 
-/*        List<Piece> pieceList = new ArrayList<>(List.of(
-                new Piece(),
-                new Piece(2),
-                new Piece(3),
-                new Piece(4),
-                new Piece(5),
-                new Piece(6),
-                new Piece(7),
-                new Piece(8),
-                new Piece(9),
-                new Piece(10),
-                new Piece(11),*//**//*
-                new Piece(12),
-                new Piece(13),
-                new Piece(14),
-                new Piece(15),
-                new Piece()
-        ));*/
+        for (int i = 0; i < 16; i++) {
+            JButton currentButton = new JButton(String.valueOf(shuffledList.get(i)));
+            currentButton.setName(String.valueOf(shuffledList.get(i)));
+//            createWinCondition(currentButton);
+            if(currentButton.getText().equals("0")) {
+                currentButton.setText("");
+                currentButton.setName("empty");
+//                createWinCondition(currentButton);
+                currentButton.setEnabled(false);
+            }
+            currentButton.setBounds(x, y, width, height);
+            x += 200;
+            if (x == 800) {
+                y += 200;
+                x = 0;
+            }
+
+            currentButton.addActionListener(new ButtonActionListener(currentButton));
+            this.add(currentButton);
+
+        }
     }
+
+    // TODO: Eventuellt obsolet.
+//    public void createWinCondition(JButton currentButton){
+//        winCondition.add(currentButton.getName());
+//    }
 
 
 

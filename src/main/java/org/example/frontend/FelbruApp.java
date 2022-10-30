@@ -8,7 +8,6 @@ public class FelbruApp extends JFrame {
     private final WelcomePanel welcomePanel;
     private final GamePanel gamePanel;
 
-
     public FelbruApp() {
         basePanel.setLayout(new BorderLayout());
 
@@ -16,17 +15,18 @@ public class FelbruApp extends JFrame {
         welcomePanel = new WelcomePanel();
         gamePanel = new GamePanel();
         basePanel.add(gamePanel, BorderLayout.CENTER);
+
         //basePanel.add(welcomePanel, BorderLayout.CENTER);
 
 
 
         // Frame
         this.add(basePanel);
-        setSize(800, 800);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("FelBru App");
+        this.setSize(800, 839);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setTitle("FelBru App");
     }
 }
