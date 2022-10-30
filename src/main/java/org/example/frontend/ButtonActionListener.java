@@ -28,6 +28,8 @@ public class ButtonActionListener implements ActionListener {
         JButton selectedBtn = (JButton) e.getSource(); // Den knappen man klickat på
         // Alla knappar i den panelen  (container)
         Component[] buttons = selectedBtn.getParent().getComponents();
+        JButton[] buttonsArray = (JButton[]) buttons;
+
 
         //TODO: Problem: Behöver parsea till <String> så att den blir jämförbar med winCondition
         ArrayList<Component> flowingButtonsList = new ArrayList<>(Arrays.stream(selectedBtn.getParent().getComponents()).toList());
