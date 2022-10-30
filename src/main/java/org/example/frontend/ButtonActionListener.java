@@ -42,7 +42,7 @@ public class ButtonActionListener implements ActionListener {
 
 
 //        testIsWin(testCurrentResult(),winCondition);
-//        isWin(currentResultList,winCondition);
+        isWin(currentResultList,winCondition);
     }
 
     public void printLists(JButton[] buttons) {
