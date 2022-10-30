@@ -29,17 +29,18 @@ public class ButtonActionListener implements ActionListener {
         System.out.println("Y: " + selectedBtn.getY());
 
         JButton blankButton = getBlankButton(knappar);
-        isMoveLegal(selectedBtn, blankButton);
+        isMoveLegal(selectedBtn, blankButton);          //TODO: Ska bakas in i annan metod.
 
     }
 
-    // Metod för att kontrollera huruvida en "move" är tillåten genom att räkna på om koordinater krockar.
-    // 1. är x samma som blank btn
+    // Metod för att kontrollera huruvida en "move" är tillåten genom att räkna på om givna koordinater
+    //  +/- 200 matchar:
+    // 1. är x samma som blankBtn?
     //        - om ja:
-    //            - är y-200 || y + 200 = blankBtn
+    //            - är y +/- 200 = blankBtn?
     public boolean isMoveLegal(JButton selectedButton, JButton blankButton) {
         if (selectedButton.getX() == blankButton.getX()) {
-            if (selectedButton.getY() - 200 == blankButton.getY() ||
+            if (selectedButton.getY() - 200 == blankButton.getY() ||            //TODO: Kan rad 49 & 50 skrivas ihop?
                     selectedButton.getY() + 200 == blankButton.getY()) {
                 System.out.println("True");
                 return true;
