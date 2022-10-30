@@ -7,9 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.*;
 import java.util.List;
 
-
 public class ButtonActionListener implements ActionListener {
-
 
     private final JButton button;
     List<String> winCondition = createWinCondition();
@@ -139,7 +137,6 @@ public class ButtonActionListener implements ActionListener {
         }
         return false;
     }
-
 
     public boolean testIsWin(List<String> testCurrentResult, List<String> winCondition) {
         if (winCondition.equals(testCurrentResult)){
