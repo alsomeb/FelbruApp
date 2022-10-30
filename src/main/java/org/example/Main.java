@@ -5,10 +5,7 @@ import org.example.frontend.FelbruApp;
 public class Main {
 /*
     TODO: Feedback efter closed beta:
-
-    TODO: Göra texten större i buttons.
     TODO: Implementera welcome screen.
-    TODO: Implementera border.
 
 */
 

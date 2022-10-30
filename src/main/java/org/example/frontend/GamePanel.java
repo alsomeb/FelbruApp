@@ -4,7 +4,6 @@ import org.example.backend.ShufflePieces;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GamePanel extends JPanel {
@@ -23,7 +22,6 @@ public class GamePanel extends JPanel {
         createJButtons();
     }
 
-//COOMMENT
     public void createJButtons(){
         int x = 0;
         int y = 0;
@@ -33,12 +31,15 @@ public class GamePanel extends JPanel {
 
         for (int i = 0; i < 16; i++) {
             JButton currentButton = new JButton(String.valueOf(shuffledList.get(i)));
+            currentButton.setFocusable(false);
+            currentButton.setFont(new Font("Sans-serif", Font.BOLD, 22));
+            currentButton.setBackground(Color.decode("#C7F2A4"));
             currentButton.setName(String.valueOf(shuffledList.get(i)));
-//            createWinCondition(currentButton);
+
             if(currentButton.getText().equals("0")) {
+                currentButton.setBackground(Color.WHITE);
                 currentButton.setText("");
                 currentButton.setName("empty");
-//                createWinCondition(currentButton);
                 currentButton.setEnabled(false);
             }
             currentButton.setBounds(x, y, width, height);
