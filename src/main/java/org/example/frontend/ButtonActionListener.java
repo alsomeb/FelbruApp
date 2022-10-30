@@ -22,8 +22,9 @@ public class ButtonActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        //ArrayList<String> winCondition = GamePanel.// Lista med alla knappar sorterade. Om = spelplan -> win.
+        // Hämtar den klickade knappen
         JButton selectedBtn = (JButton) e.getSource(); // Den knappen man klickat på
+
         // Alla knappar i den panelen  (container)
         Component[] components = selectedBtn.getParent().getComponents();
         JButton[] buttons = convertComponentArrayToButtonArray(components);
@@ -35,6 +36,7 @@ public class ButtonActionListener implements ActionListener {
 
         JButton blankButton = getBlankButton(buttons);
 
+        // Flytt av brickor
         movePiece(selectedBtn, blankButton);
         List<String> currentResultList = getCurrentResultList(buttons);
 
@@ -46,6 +48,19 @@ public class ButtonActionListener implements ActionListener {
 //        isWin(currentResultList,winCondition);
     }
 
+    public void printLists(JButton[] buttons) {
+        List<String> current = getCurrentResultList(buttons);
+        System.out.println(current);
+        System.out.println(winCondition);
+    }
+
+    public void createTestWinCondition(JButton[] buttons) {
+        for (int i = 0; i < buttons.length; i++) {
+            buttons[i].setText(winCondition.get(i));
+        }
+
+    }
+
     public void movePiece(JButton selectedButton, JButton blankButton) {
 
         if (isMoveLegal(selectedButton, blankButton)) {
@@ -55,6 +70,15 @@ public class ButtonActionListener implements ActionListener {
             selectedButton.setEnabled(false);
         }
 
+    }
+
+    public JButton[] convertComponentArrayToButtonArray(Component[] components) {
+        JButton[] buttons = new JButton[components.length];
+
+        for (int i = 0; i < components.length; i++) {
+            buttons[i] = (JButton) components[i];
+        }
+        return buttons;
     }
 
     // Metod för att kontrollera huruvida en "move" är tillåten genom att räkna på om givna koordinater
@@ -75,11 +99,9 @@ public class ButtonActionListener implements ActionListener {
                     selectedButton.getX() + 200 == blankButton.getX()) {
                 System.out.println("True");
                 return true;
-            } else {
-                System.out.println("False");
-                return false;
             }
         }
+        // I alla andra fall
         System.out.println("False");
         return false;
     }
@@ -94,6 +116,15 @@ public class ButtonActionListener implements ActionListener {
             }
         }
         throw new NoSuchElementException();
+    }
+
+    public List<String> getCurrentResultList(JButton[] buttons) {
+        List<String> current = new ArrayList<>(
+                Arrays.stream(buttons).map(button -> button.getText()).toList());
+
+        int blank = current.indexOf("");
+        current.set(blank, "empty");
+        return current;
     }
 
     public List<String> createWinCondition() {
@@ -125,72 +156,3 @@ public class ButtonActionListener implements ActionListener {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-        for (int row = 0; row < buttonGrid.length; row++) {
-            for (int col = 0; col < buttonGrid.length; col++) {
-                if (buttonGrid[row][col] == selectedBtn) {
-                    System.out.println(selectedBtn.getText() + " KNAPPENS NR");
-                    System.out.println(row + ", " + col + " KNAPPENS POS");
-                    List<Integer> blank = getCurrentEmptyButtonPosition(buttonGrid);
-                    System.out.println(blank + ", BLANK POS");
-                    JButton blankBtn = buttonGrid[blank.get(0)][blank.get(1)];
-                    isMoveLegal(blankBtn, buttonGrid, row, col);
-                        // Tillåt move
-                }
-            }
-        }
-    }
-
- */
-/*
-    public List<Integer> getCurrentEmptyButtonPosition(JButton[][] buttonGrid) {
-
-//        int SelectedPanelPosition;
-        for (int row = 0; row < buttonGrid.length; row++) {
-            for (int col = 0; col < buttonGrid.length; col++) {
-                if(buttonGrid[row][col].getText().isBlank()){
-                    return new ArrayList<>(List.of(row, col));
-                }
-            }
-        }
-        throw new NoSuchElementException(); // Finns ej
-    }
-
-    public boolean isMoveLegal(JButton blankBtn, JButton[][] buttonGrid, int currentRow, int currentCol){
-        if (buttonGrid[currentRow][currentCol-1] == blankBtn || buttonGrid[currentRow][currentCol+1] == blankBtn ||
-                buttonGrid[currentRow+1][currentCol] == blankBtn ||
-                buttonGrid[currentRow-1][currentCol] == blankBtn){
-            System.out.println("True");
-            return true;
-        }
-        else{
-            System.out.println("False");
-            return false;
-        }
-
-
-            /*bool adjacentIsBlank(int selectedGrid, int currentBlankGrid){
-
-if (selectedGrid[row][collumn-1] == currentBlankGrid || selectedGrid [row-1][collumn] etc...){
-return true;
-}
-
- */
