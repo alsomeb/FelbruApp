@@ -6,6 +6,7 @@ public class Main {
 /*
     TODO: Feedback efter closed beta:
     TODO: Implementera welcome screen.
+    TODO: Gör programmet executable -> Jar
 
 */
 

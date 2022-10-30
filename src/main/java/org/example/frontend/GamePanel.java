@@ -55,11 +55,6 @@ public class GamePanel extends JPanel {
         }
     }
 
-    // TODO: Eventuellt obsolet.
-//    public void createWinCondition(JButton currentButton){
-//        winCondition.add(currentButton.getName());
-//    }
-
 
 
 }
