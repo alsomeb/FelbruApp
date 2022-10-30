@@ -84,7 +84,6 @@ public class ButtonActionListener implements ActionListener {
     // 1. är x samma som blankBtn?
     //        - om ja:
     //            - är y +/- 200 = blankBtn?
-    //COMMENT
     public boolean isMoveLegal(JButton selectedButton, JButton blankButton) {
         if (selectedButton.getX() == blankButton.getX()) {
             if (selectedButton.getY() - 200 == blankButton.getY() ||            //TODO: Kan rad 94, 95 skrivas ihop?
