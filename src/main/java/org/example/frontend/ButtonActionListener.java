@@ -16,7 +16,7 @@ public class ButtonActionListener implements ActionListener {
         this.button = button;
     }
 
-// COOMENT
+    // COOMENT
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton selectedBtn = (JButton) e.getSource(); // Den knappen man klickat på
@@ -29,7 +29,23 @@ public class ButtonActionListener implements ActionListener {
         System.out.println("Y: " + selectedBtn.getY());
 
         JButton blankButton = getBlankButton(knappar);
-        isMoveLegal(selectedBtn, blankButton);          //TODO: Ska bakas in i annan metod.
+
+        movePiece(selectedBtn, blankButton);
+
+    }
+    /*
+         * Gör blank enabled.
+         * Tillskriv värdet av selected till blank
+        * gör selected till 0
+     */
+    public void movePiece(JButton selectedButton, JButton blankButton) {
+
+        if (isMoveLegal(selectedButton, blankButton)) {
+            blankButton.setEnabled(true);
+            blankButton.setText(selectedButton.getText());
+            selectedButton.setText("");
+            selectedButton.setEnabled(false);
+        }
 
     }
 
