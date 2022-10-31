@@ -88,7 +88,7 @@ public class ButtonActionListener implements ActionListener {
     //            - är y +/- 200 = blankBtn?
     public boolean isMoveLegal(JButton selectedButton, JButton blankButton) {
         if (selectedButton.getX() == blankButton.getX()) {
-            if (selectedButton.getY() - 200 == blankButton.getY() ||            //TODO: Kan rad 94, 95 skrivas ihop?
+            if (selectedButton.getY() - 200 == blankButton.getY() ||
                     selectedButton.getY() + 200 == blankButton.getY()) {
                 System.out.println("True");
                 return true;
@@ -132,7 +132,7 @@ public class ButtonActionListener implements ActionListener {
                 "11", "12", "13", "14", "15", "empty"));
     }
 
-    public boolean isWin(List<String> currentResult, List<String> winCondition) {
+    public boolean isWin(List<String> currentResult, List<String> winCondition) {  // TODO Skall vi ha denna VOID ?
         if (winCondition.equals(currentResult)){
             JOptionPane.showMessageDialog(null,"Winner winner, chicken dinner!");
             return true;

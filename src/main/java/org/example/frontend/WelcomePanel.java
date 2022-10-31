@@ -8,6 +8,16 @@ public class WelcomePanel extends JPanel {
     private final JButton startGameButton = new JButton("Start Game");
 
     public WelcomePanel() {
+
+        // Button
+        startGameButton.setFocusable(false);
+        startGameButton.setFont(new Font("Sans-serif", Font.BOLD, 20));
+        startGameButton.setBackground(Color.decode("#C7F2A4"));
+
+        // Text
+        welcomeText.setFont(new Font("Sans-serif", Font.BOLD, 20));
+
+        this.setBackground(Color.decode("#FFFAE7"));
         this.setLayout(new GridBagLayout());
         this.add(welcomeText);
         this.add(Box.createHorizontalStrut(10)); // Space Between label and button

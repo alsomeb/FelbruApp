@@ -14,11 +14,9 @@ public class FelbruApp extends JFrame {
         // Game panels
         welcomePanel = new WelcomePanel();
         gamePanel = new GamePanel();
-        basePanel.add(gamePanel, BorderLayout.CENTER);
 
-        //basePanel.add(welcomePanel, BorderLayout.CENTER);
-
-
+        //basePanel.add(gamePanel, BorderLayout.CENTER);
+        basePanel.add(welcomePanel, BorderLayout.CENTER);
 
         // Frame
         this.add(basePanel);
