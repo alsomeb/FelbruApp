@@ -7,15 +7,6 @@ import java.awt.*;
 import java.util.List;
 
 public class GamePanel extends JPanel {
-
-    //TODO: Eventuellt obsolet. Om jag inte kan skapa upp listan winCondition härifrån till ButtonActionListener så ska
-    // den tas bort helt från GamePanel. "setName" måste vara kvar!!!
-//    public List<String> getWinCondition() {
-//        return winCondition;
-//    }
-    //TODO: Eventuellt obsolet.
-//    public List<String> winCondition = new ArrayList<>();
-
     public GamePanel() {
         this.setBackground(Color.LIGHT_GRAY);
         this.setLayout(null);
