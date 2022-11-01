@@ -16,7 +16,6 @@ public class ButtonActionListener implements ActionListener {
         this.button = button;
     }
 
-    // COOMENT
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -28,7 +27,7 @@ public class ButtonActionListener implements ActionListener {
         JButton[] buttons = convertComponentArrayToButtonArray(components);
 
         // Prints
-        System.out.println("DU KLICKADE PÅ DENNA KNAPPJÄVEL");
+        System.out.println("SELECTED TILE POS");
         System.out.println("X: " + selectedBtn.getX());
         System.out.println("Y: " + selectedBtn.getY());
 
@@ -42,14 +41,14 @@ public class ButtonActionListener implements ActionListener {
         printLists(buttons);
 
 
-//        testIsWin(testCurrentResult(),winCondition);
-//        isWin(currentResultList,winCondition);
+        //testIsWin(testCurrentResult(),winCondition);
+        isWin(currentResultList,winCondition);
     }
 
     public void printLists(JButton[] buttons) {
         List<String> current = getCurrentResultList(buttons);
         System.out.println(current);
-        System.out.println(winCondition);
+        System.out.println(winCondition + "\n");
     }
 
     public void createTestWinCondition(JButton[] buttons) {
@@ -64,7 +63,10 @@ public class ButtonActionListener implements ActionListener {
         if (isMoveLegal(selectedButton, blankButton)) {
             blankButton.setEnabled(true);
             blankButton.setText(selectedButton.getText());
+            blankButton.setBackground(Color.decode("#C7F2A4"));
+
             selectedButton.setText("");
+            selectedButton.setBackground(Color.WHITE);
             selectedButton.setEnabled(false);
         }
 
@@ -86,7 +88,7 @@ public class ButtonActionListener implements ActionListener {
     //            - är y +/- 200 = blankBtn?
     public boolean isMoveLegal(JButton selectedButton, JButton blankButton) {
         if (selectedButton.getX() == blankButton.getX()) {
-            if (selectedButton.getY() - 200 == blankButton.getY() ||            //TODO: Kan rad 94, 95 skrivas ihop?
+            if (selectedButton.getY() - 200 == blankButton.getY() ||
                     selectedButton.getY() + 200 == blankButton.getY()) {
                 System.out.println("True");
                 return true;
@@ -95,21 +97,21 @@ public class ButtonActionListener implements ActionListener {
         if (selectedButton.getY() == blankButton.getY()) {
             if (selectedButton.getX() - 200 == blankButton.getX() ||
                     selectedButton.getX() + 200 == blankButton.getX()) {
-                System.out.println("True");
+                System.out.println("Can be moved: True");
                 return true;
             }
         }
         // I alla andra fall
-        System.out.println("False");
+        System.out.println("Can be moved: False");
         return false;
     }
 
     public JButton getBlankButton(JButton[] buttons) {
         for (JButton button : buttons) {
             if (button.getText().isBlank()) {
-                System.out.println("BLANK BUTTON:");
+                System.out.println("BLANK TILE POS:");
                 System.out.println("X: " + button.getX());
-                System.out.println("Y: " + button.getY());
+                System.out.println("Y: " + button.getY() + "\n");
                 return button;
             }
         }
@@ -130,24 +132,20 @@ public class ButtonActionListener implements ActionListener {
                 "11", "12", "13", "14", "15", "empty"));
     }
 
-    public boolean isWin(List<String> currentResult, List<String> winCondition) {
+    public void isWin(List<String> currentResult, List<String> winCondition) {
         if (winCondition.equals(currentResult)){
             JOptionPane.showMessageDialog(null,"Winner winner, chicken dinner!");
-            return true;
         }
-        return false;
     }
 
-    public boolean testIsWin(List<String> testCurrentResult, List<String> winCondition) {
+    public void testIsWin(List<String> testCurrentResult, List<String> winCondition) {
         if (winCondition.equals(testCurrentResult)){
-           JOptionPane.showMessageDialog(null,"Winner winner, chicken dinner!");
-            return true;
+            System.out.println("\n" + "Current: " + testCurrentResult + "\n" + "Win: " + winCondition);
+            JOptionPane.showMessageDialog(null,"Winner winner, chicken dinner!");
         }
-        return false;
     }
 
     public List<String> testCurrentResult() {
-
         return new ArrayList<>(List.of("1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
                 "11", "12", "13", "14", "15", "empty"));
     }

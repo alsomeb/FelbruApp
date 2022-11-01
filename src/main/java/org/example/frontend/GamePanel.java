@@ -4,26 +4,15 @@ import org.example.backend.ShufflePieces;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GamePanel extends JPanel {
-
-    //TODO: Eventuellt obsolet. Om jag inte kan skapa upp listan winCondition härifrån till ButtonActionListener så ska
-    // den tas bort helt från GamePanel. "setName" måste vara kvar!!!
-//    public List<String> getWinCondition() {
-//        return winCondition;
-//    }
-    //TODO: Eventuellt obsolet.
-//    public List<String> winCondition = new ArrayList<>();
-
     public GamePanel() {
         this.setBackground(Color.LIGHT_GRAY);
         this.setLayout(null);
         createJButtons();
     }
 
-//COOMMENT
     public void createJButtons(){
         int x = 0;
         int y = 0;
@@ -33,14 +22,15 @@ public class GamePanel extends JPanel {
 
         for (int i = 0; i < 16; i++) {
             JButton currentButton = new JButton(String.valueOf(shuffledList.get(i)));
-            currentButton.setName(String.valueOf(shuffledList.get(i)));
-//            createWinCondition(currentButton);
+            currentButton.setFocusable(false);
+            currentButton.setFont(new Font("Sans-serif", Font.BOLD, 22));
+            currentButton.setBackground(Color.decode("#C7F2A4"));
             if(currentButton.getText().equals("0")) {
+                currentButton.setBackground(Color.WHITE);
                 currentButton.setText("");
-                currentButton.setName("empty");
-//                createWinCondition(currentButton);
                 currentButton.setEnabled(false);
             }
+
             currentButton.setBounds(x, y, width, height);
             x += 200;
             if (x == 800) {
@@ -53,11 +43,6 @@ public class GamePanel extends JPanel {
 
         }
     }
-
-    // TODO: Eventuellt obsolet.
-//    public void createWinCondition(JButton currentButton){
-//        winCondition.add(currentButton.getName());
-//    }
 
 
 

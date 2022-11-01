@@ -3,9 +3,14 @@ package org.example;
 import org.example.frontend.FelbruApp;
 
 public class Main {
+/*
+    TODO KANSKE: Gör programmet executable -> Jar
 
-    //TODO: UPPDATERA LÖPANDE
-    /*https://excalidraw.com/#json=W4Ui3fR0ck4YJoCdGcjuE,5-ppY9WiHrHqH8-KwcY5og*/
+*/
+
+    //TODO: EXCALIDRAW: UPPDATERA LÖPANDE
+//    https://excalidraw.com/#json=8K4GjlDAPC65FhG3Zsuqz,LvQUJdcsrtuzNIiZP_EIrQ
+
     public static void main(String[] args) {
         new FelbruApp();
     }
