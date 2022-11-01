@@ -25,11 +25,9 @@ public class GamePanel extends JPanel {
             currentButton.setFocusable(false);
             currentButton.setFont(new Font("Sans-serif", Font.BOLD, 22));
             currentButton.setBackground(Color.decode("#C7F2A4"));
-            //currentButton.setName(String.valueOf(shuffledList.get(i))); // Behövs ej
             if(currentButton.getText().equals("0")) {
                 currentButton.setBackground(Color.WHITE);
                 currentButton.setText("");
-                //currentButton.setName("empty"); // Behövs ej
                 currentButton.setEnabled(false);
             }
 

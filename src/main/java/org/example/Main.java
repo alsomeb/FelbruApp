@@ -4,9 +4,7 @@ import org.example.frontend.FelbruApp;
 
 public class Main {
 /*
-    TODO: Feedback efter closed beta:
-    TODO: Implementera welcome screen.
-    TODO: Gör programmet executable -> Jar
+    TODO KANSKE: Gör programmet executable -> Jar
 
 */
 

@@ -41,14 +41,14 @@ public class ButtonActionListener implements ActionListener {
         printLists(buttons);
 
 
-//        testIsWin(testCurrentResult(),winCondition);
+        //testIsWin(testCurrentResult(),winCondition);
         isWin(currentResultList,winCondition);
     }
 
     public void printLists(JButton[] buttons) {
         List<String> current = getCurrentResultList(buttons);
         System.out.println(current);
-        System.out.println(winCondition);
+        System.out.println(winCondition + "\n");
     }
 
     public void createTestWinCondition(JButton[] buttons) {
@@ -132,24 +132,20 @@ public class ButtonActionListener implements ActionListener {
                 "11", "12", "13", "14", "15", "empty"));
     }
 
-    public boolean isWin(List<String> currentResult, List<String> winCondition) {  // TODO Skall vi ha denna VOID ?
+    public void isWin(List<String> currentResult, List<String> winCondition) {
         if (winCondition.equals(currentResult)){
             JOptionPane.showMessageDialog(null,"Winner winner, chicken dinner!");
-            return true;
         }
-        return false;
     }
 
-    public boolean testIsWin(List<String> testCurrentResult, List<String> winCondition) {
+    public void testIsWin(List<String> testCurrentResult, List<String> winCondition) {
         if (winCondition.equals(testCurrentResult)){
-           JOptionPane.showMessageDialog(null,"Winner winner, chicken dinner!");
-            return true;
+            System.out.println("\n" + "Current: " + testCurrentResult + "\n" + "Win: " + winCondition);
+            JOptionPane.showMessageDialog(null,"Winner winner, chicken dinner!");
         }
-        return false;
     }
 
     public List<String> testCurrentResult() {
-
         return new ArrayList<>(List.of("1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
                 "11", "12", "13", "14", "15", "empty"));
     }
