@@ -27,7 +27,7 @@ public class ButtonActionListener implements ActionListener {
         JButton[] buttons = convertComponentArrayToButtonArray(components);
 
         // Prints
-        System.out.println("DU KLICKADE PÅ DENNA KNAPPJÄVEL");
+        System.out.println("SELECTED TILE POS");
         System.out.println("X: " + selectedBtn.getX());
         System.out.println("Y: " + selectedBtn.getY());
 
@@ -97,21 +97,21 @@ public class ButtonActionListener implements ActionListener {
         if (selectedButton.getY() == blankButton.getY()) {
             if (selectedButton.getX() - 200 == blankButton.getX() ||
                     selectedButton.getX() + 200 == blankButton.getX()) {
-                System.out.println("True");
+                System.out.println("Can be moved: True");
                 return true;
             }
         }
         // I alla andra fall
-        System.out.println("False");
+        System.out.println("Can be moved: False");
         return false;
     }
 
     public JButton getBlankButton(JButton[] buttons) {
         for (JButton button : buttons) {
             if (button.getText().isBlank()) {
-                System.out.println("BLANK BUTTON:");
+                System.out.println("BLANK TILE POS:");
                 System.out.println("X: " + button.getX());
-                System.out.println("Y: " + button.getY());
+                System.out.println("Y: " + button.getY() + "\n");
                 return button;
             }
         }
