@@ -3,7 +3,7 @@ package org.example;
 import org.example.frontend.FelbruApp;
 
 public class Main {
-//    https://excalidraw.com/#json=h2ln-SE195rpepGIfz5YE,91_X_VkfT42HkIPdHhfKQg
+//    https://excalidraw.com/#json=CDWQGEbRN4ZVtrEsg8kBW,pXa6q_BfdJdLOuTuDRAwhA
     public static void main(String[] args) {
         new FelbruApp();
     }
