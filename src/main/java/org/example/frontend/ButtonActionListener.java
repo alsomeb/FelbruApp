@@ -9,11 +9,14 @@ import java.util.List;
 
 public class ButtonActionListener implements ActionListener {
 
+    private boolean hasWonGame;
+
     private final JButton button;
     List<String> winCondition = createWinCondition();
 
-    public ButtonActionListener(JButton button) {
+    public ButtonActionListener(JButton button, boolean hasWonGame) {
         this.button = button;
+        this.hasWonGame = hasWonGame;
     }
 
     @Override
@@ -40,9 +43,36 @@ public class ButtonActionListener implements ActionListener {
         // Resultat i terminalen för debugging av spel
         printLists(buttons);
 
+        testIsWin(testCurrentResult(),winCondition);
+        //isWin(currentResultList,winCondition);
 
-        //testIsWin(testCurrentResult(),winCondition);
-        isWin(currentResultList,winCondition);
+        // Control flow för vunnet spel
+        if(hasWonGame) {
+            int choice = promptWonGame();
+            switch (choice) {
+                case 0 -> reloadGame(selectedBtn);
+                case 1,-1 -> System.exit(0);
+            }
+        }
+    }
+
+    private int promptWonGame() {
+        Object[] options = {"Ja", "Nej, Avsluta"};
+        Image winPicImage = new ImageIcon("src/main/resources/img/bigwin.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH); // ReSize
+        ImageIcon winPicIcon = new ImageIcon(winPicImage); // Spara den i en ImageIcon för att använda I JOptionPane
+
+        return JOptionPane.showOptionDialog(null, "Starta om spelet?", "Grattis! Du har vunnit", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, winPicIcon, options, null);
+    }
+
+    private void reloadGame(JButton selectedBtn) { // Behöver knappen pga vi skall hämta dens parent
+        Container gamePanel = selectedBtn.getParent(); // Hämtar Container som är GamePanel
+        Container mainPanel = gamePanel.getParent(); // Hämtar mainPanelen som är "basePanel i FelBru App (Parent till gamePanel)
+
+        mainPanel.remove(gamePanel); // Tar bort gamePanel från mainPanel
+        mainPanel.add(new GamePanel()); // Lägger in en ny gamePanel
+
+        mainPanel.revalidate(); // Måla om UI
+        mainPanel.repaint();
     }
 
     public void printLists(JButton[] buttons) {
@@ -135,6 +165,7 @@ public class ButtonActionListener implements ActionListener {
     public void isWin(List<String> currentResult, List<String> winCondition) {
         if (winCondition.equals(currentResult)){
             JOptionPane.showMessageDialog(null,"Winner winner, chicken dinner!");
+            hasWonGame = true;
         }
     }
 
@@ -142,6 +173,7 @@ public class ButtonActionListener implements ActionListener {
         if (winCondition.equals(testCurrentResult)){
             System.out.println("\n" + "Current: " + testCurrentResult + "\n" + "Win: " + winCondition);
             JOptionPane.showMessageDialog(null,"Winner winner, chicken dinner!");
+            hasWonGame = true;
         }
     }
 
@@ -149,5 +181,4 @@ public class ButtonActionListener implements ActionListener {
         return new ArrayList<>(List.of("1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
                 "11", "12", "13", "14", "15", "empty"));
     }
-
 }

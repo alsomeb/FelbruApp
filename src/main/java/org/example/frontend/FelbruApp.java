@@ -7,7 +7,6 @@ public class FelbruApp extends JFrame {
     private final JPanel basePanel = new JPanel();
     private final WelcomePanel welcomePanel;
     private final GamePanel gamePanel;
-
     private final JButton startGameButton;
 
     public FelbruApp() {
@@ -24,7 +23,7 @@ public class FelbruApp extends JFrame {
         startButtonListener();
 
         // Frame
-        this.add(basePanel);
+        this.add(basePanel); // Basplattan (Panelen)
         this.setSize(800, 839);
         this.setResizable(false);
         this.setLocationRelativeTo(null);

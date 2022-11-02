@@ -7,6 +7,7 @@ import java.awt.*;
 import java.util.List;
 
 public class GamePanel extends JPanel {
+
     public GamePanel() {
         this.setBackground(Color.LIGHT_GRAY);
         this.setLayout(null);
@@ -38,7 +39,7 @@ public class GamePanel extends JPanel {
                 x = 0;
             }
 
-            currentButton.addActionListener(new ButtonActionListener(currentButton));
+            currentButton.addActionListener(new ButtonActionListener(currentButton, false));
             this.add(currentButton);
 
         }
