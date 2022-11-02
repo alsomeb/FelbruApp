@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-// Daniel Förklarar
+// Daniel Förklarar.
 // skapar upp en lista 0-15
 // Använder "shuffle" för att slumpa utfallet.
 public class ShufflePieces {

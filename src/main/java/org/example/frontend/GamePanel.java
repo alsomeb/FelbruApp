@@ -14,7 +14,7 @@ public class GamePanel extends JPanel {
         createJButtons();
     }
 
-    // Daniel Förklarar
+    // Daniel Förklarar.
     public void createJButtons(){
         int x = 0;
         int y = 0;

@@ -119,7 +119,7 @@ public class ButtonActionListener implements ActionListener {
     }
 
     // Daniel förklarar
-    // Om en button är "blank" returneras den.
+    // Om en button är "blank" returneras den..
     public JButton getBlankButton(JButton[] buttons) {
         for (JButton button : buttons) {
             if (button.getText().isBlank()) {
