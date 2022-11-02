@@ -8,6 +8,7 @@ import java.util.*;
 import java.util.List;
 
 public class ButtonActionListener implements ActionListener {
+    // En skräddarsydd ActionListener, med ytterligare funktionalitet
 
     private boolean hasWonGame;
 
@@ -22,18 +23,19 @@ public class ButtonActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        // Hämtar den klickade knappen
-        JButton selectedBtn = (JButton) e.getSource(); // Den knappen man klickat på
+        // Hämtar den JButton man klickat på
+        JButton selectedBtn = (JButton) e.getSource();
 
-        // Alla knappar i den panelen  (container)
+        // Alla knappar i den panelen (container)
         Component[] components = selectedBtn.getParent().getComponents();
         JButton[] buttons = convertComponentArrayToButtonArray(components);
 
-        // Prints
+        // Debugging Prints
         System.out.println("SELECTED TILE POS");
         System.out.println("X: " + selectedBtn.getX());
         System.out.println("Y: " + selectedBtn.getY());
 
+        // Hämtar aktuell blankButton
         JButton blankButton = getBlankButton(buttons);
 
         // Flytt av brickor
@@ -56,38 +58,17 @@ public class ButtonActionListener implements ActionListener {
         }
     }
 
-    private int promptWonGame() {
-        Object[] options = {"Ja", "Nej, Avsluta"};
-        Image winPicImage = new ImageIcon("src/main/resources/img/bigwin.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH); // ReSize
-        ImageIcon winPicIcon = new ImageIcon(winPicImage); // Spara den i en ImageIcon för att använda I JOptionPane
-
-        return JOptionPane.showOptionDialog(null, "Starta om spelet?", "Grattis! Du har vunnit", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, winPicIcon, options, null);
-    }
-
-    private void reloadGame(JButton selectedBtn) { // Behöver knappen pga vi skall hämta dens parent
-        Container gamePanel = selectedBtn.getParent(); // Hämtar Container som är GamePanel
-        Container mainPanel = gamePanel.getParent(); // Hämtar mainPanelen som är "basePanel i FelBru App (Parent till gamePanel)
-
-        mainPanel.remove(gamePanel); // Tar bort gamePanel från mainPanel
-        mainPanel.add(new GamePanel()); // Lägger in en ny gamePanel
-
-        mainPanel.revalidate(); // Måla om UI
-        mainPanel.repaint();
-    }
-
+    // Daniel Förklarar
+    // För debugging.
     public void printLists(JButton[] buttons) {
         List<String> current = getCurrentResultList(buttons);
         System.out.println(current);
         System.out.println(winCondition + "\n");
     }
 
-    public void createTestWinCondition(JButton[] buttons) {
-        for (int i = 0; i < buttons.length; i++) {
-            buttons[i].setText(winCondition.get(i));
-        }
 
-    }
-
+    // Daniel förklarar
+    // Flyttar pjäs förutsatt att valet är tillåtet.
     public void movePiece(JButton selectedButton, JButton blankButton) {
 
         if (isMoveLegal(selectedButton, blankButton)) {
@@ -102,20 +83,9 @@ public class ButtonActionListener implements ActionListener {
 
     }
 
-    public JButton[] convertComponentArrayToButtonArray(Component[] components) {
-        JButton[] buttons = new JButton[components.length];
-
-        for (int i = 0; i < components.length; i++) {
-            buttons[i] = (JButton) components[i];
-        }
-        return buttons;
-    }
-
-    // Metod för att kontrollera huruvida en "move" är tillåten genom att räkna på om givna koordinater
-    //  +/- 200 matchar:
-    // 1. är x samma som blankBtn?
-    //        - om ja:
-    //            - är y +/- 200 = blankBtn?
+    // Daniel förklarar
+    // Om X-värdet av vald knapp överensstämmer med X-värdet för blank yta kontrolleras huruvida Y +/-200 överensstämmer.
+    // Metoden svarar på frågan huruvida knapparna är angränsande till varandra horisontellt och vertikalt, men inte diagonalt.
     public boolean isMoveLegal(JButton selectedButton, JButton blankButton) {
         if (selectedButton.getX() == blankButton.getX()) {
             if (selectedButton.getY() - 200 == blankButton.getY() ||
@@ -136,6 +106,20 @@ public class ButtonActionListener implements ActionListener {
         return false;
     }
 
+    // Alex förklarar
+    // Konverterar Array av Typ "Components" till JButtons, så vi kan komma åt dens metoder,
+    // Vi har hämtat alla Komponenter i container sedan innan
+    public JButton[] convertComponentArrayToButtonArray(Component[] components) {
+        JButton[] buttons = new JButton[components.length];
+
+        for (int i = 0; i < components.length; i++) {
+            buttons[i] = (JButton) components[i];
+        }
+        return buttons;
+    }
+
+    // Daniel förklarar
+    // Om en button är "blank" returneras den.
     public JButton getBlankButton(JButton[] buttons) {
         for (JButton button : buttons) {
             if (button.getText().isBlank()) {
@@ -180,5 +164,26 @@ public class ButtonActionListener implements ActionListener {
     public List<String> testCurrentResult() {
         return new ArrayList<>(List.of("1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
                 "11", "12", "13", "14", "15", "empty"));
+    }
+
+    // Alex förklarar
+    private int promptWonGame() {
+        Object[] options = {"Yes", "No, Exit"};
+        Image winPicImage = new ImageIcon("src/main/resources/img/bigwin.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH); // ReSize
+        ImageIcon winPicIcon = new ImageIcon(winPicImage); // Spara den i en ImageIcon för att använda I JOptionPane
+
+        return JOptionPane.showOptionDialog(null, "Play Again ?", "You won! Congrats", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, winPicIcon, options, null);
+    }
+
+    // Alex Förklarar
+    private void reloadGame(JButton selectedBtn) { // Behöver knappen pga vi skall hämta dens parent
+        Container gamePanel = selectedBtn.getParent(); // Hämtar Container som är GamePanel
+        Container mainPanel = gamePanel.getParent(); // Hämtar mainPanelen som är "basePanel i FelBru App (Parent till gamePanel)
+
+        mainPanel.remove(gamePanel); // Tar bort gamePanel från mainPanel
+        mainPanel.add(new GamePanel()); // Lägger in en ny gamePanel
+
+        mainPanel.revalidate(); // Måla om UI
+        mainPanel.repaint();
     }
 }
