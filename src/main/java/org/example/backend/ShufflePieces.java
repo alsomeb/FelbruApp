@@ -8,6 +8,7 @@ import java.util.List;
 // skapar upp en lista 0-15
 // Använder "shuffle" för att slumpa utfallet.
 public class ShufflePieces {
+
     public List<Integer> getShuffledNumberList() {
         List<Integer> randomNumberList = new ArrayList<>();
 

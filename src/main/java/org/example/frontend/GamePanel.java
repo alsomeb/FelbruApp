@@ -28,7 +28,7 @@ public class GamePanel extends JPanel {
         for (int i = 0; i < 16; i++) {
             // Varje knapp tillskrivs en slumpad siffra från shuffledList
             JButton currentButton = new JButton(String.valueOf(shuffledList.get(i)));
-            currentButton.setFocusable(false);
+            currentButton.setFocusable(false); // Tar bort den fula rutan som annars hade omringat siffran.
             currentButton.setFont(new Font("Sans-serif", Font.BOLD, 22));
             currentButton.setBackground(Color.decode("#C7F2A4"));
             // Om siffran är 0 blir knappen "blankButton". Finns under huven men går inte att interagera med.

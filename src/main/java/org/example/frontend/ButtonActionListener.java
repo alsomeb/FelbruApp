@@ -90,19 +90,19 @@ public class ButtonActionListener implements ActionListener {
         if (selectedButton.getX() == blankButton.getX()) {
             if (selectedButton.getY() - 200 == blankButton.getY() ||
                     selectedButton.getY() + 200 == blankButton.getY()) {
-                System.out.println("True");
+                System.out.println("True"); // För debugging
                 return true;
             }
         }
         if (selectedButton.getY() == blankButton.getY()) {
             if (selectedButton.getX() - 200 == blankButton.getX() ||
                     selectedButton.getX() + 200 == blankButton.getX()) {
-                System.out.println("Can be moved: True");
+                System.out.println("Can be moved: True"); // För debugging
                 return true;
             }
         }
         // I alla andra fall
-        System.out.println("Can be moved: False");
+        System.out.println("Can be moved: False"); // För debugging
         return false;
     }
 
@@ -132,6 +132,10 @@ public class ButtonActionListener implements ActionListener {
         throw new NoSuchElementException();
     }
 
+    // Alex förklarar
+    // Skickar in den konverterade JButton array och öppnar up en ström på den arrayen,
+    // Hämtar knappens text från varje knapp och collectar allt till en lista
+    // Denna används för att jämföra mot Facit Listan "WinCondition" som bestämmer om man vunnit spelet om dem här 2 Listorna equals() varandra
     public List<String> getCurrentResultList(JButton[] buttons) {
         List<String> current = new ArrayList<>(
                 Arrays.stream(buttons).map(button -> button.getText()).toList());
@@ -141,11 +145,16 @@ public class ButtonActionListener implements ActionListener {
         return current;
     }
 
+    // Daniel Förklarar
+    // Spelet är vunnet endast när spelets JButtons motsvarar arrayen nedan.
+    // Metoden kallas vid start av programmet och sparas i winCondition
     public List<String> createWinCondition() {
         return new ArrayList<>(List.of("1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
                 "11", "12", "13", "14", "15", "empty"));
     }
 
+    // Daniel Förklarar
+    // vid varje flytt av pjäs jämförs win condition med spelbrädets nuvarande uppställning.
     public void isWin(List<String> currentResult, List<String> winCondition) {
         if (winCondition.equals(currentResult)){
             JOptionPane.showMessageDialog(null,"Winner winner, chicken dinner!");
@@ -153,6 +162,8 @@ public class ButtonActionListener implements ActionListener {
         }
     }
 
+    // Daniel Förklarar
+    // Testvariant av isWin för att säkerställa att logiken fungerar.
     public void testIsWin(List<String> testCurrentResult, List<String> winCondition) {
         if (winCondition.equals(testCurrentResult)){
             System.out.println("\n" + "Current: " + testCurrentResult + "\n" + "Win: " + winCondition);
@@ -161,6 +172,9 @@ public class ButtonActionListener implements ActionListener {
         }
     }
 
+    // Daniel förklarar
+    // En lista som speglar hur listan currentResult ser ut när spelet är vunnet.
+    // Tillåter test av vinst utan att behöva spela igenom spelet.
     public List<String> testCurrentResult() {
         return new ArrayList<>(List.of("1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
                 "11", "12", "13", "14", "15", "empty"));
